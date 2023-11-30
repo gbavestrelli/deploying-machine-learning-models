@@ -111,9 +111,7 @@ def load_pipeline_keras() -> Pipeline:
 
 
 def load_encoder() -> LabelEncoder:
-    encoder = joblib.load(config.ENCODER_PATH)
-
-    return encoder
+    return joblib.load(config.ENCODER_PATH)
 
 
 def remove_old_pipelines(*, files_to_keep: t.List[str]) -> None:

@@ -14,8 +14,7 @@ _logger = logging.getLogger(__name__)
 
 def load_dataset(*, file_name: str
                  ) -> pd.DataFrame:
-    _data = pd.read_csv(f'{config.DATASET_DIR}/{file_name}')
-    return _data
+    return pd.read_csv(f'{config.DATASET_DIR}/{file_name}')
 
 
 def save_pipeline(*, pipeline_to_persist) -> None:
@@ -41,8 +40,7 @@ def load_pipeline(*, file_name: str
     """Load a persisted pipeline."""
 
     file_path = config.TRAINED_MODEL_DIR / file_name
-    trained_model = joblib.load(filename=file_path)
-    return trained_model
+    return joblib.load(filename=file_path)
 
 
 def remove_old_pipelines(*, files_to_keep: t.List[str]) -> None:

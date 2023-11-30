@@ -8,10 +8,7 @@ class LogTransformer(BaseEstimator, TransformerMixin):
     """Logarithm transformer."""
 
     def __init__(self, variables=None):
-        if not isinstance(variables, list):
-            self.variables = [variables]
-        else:
-            self.variables = variables
+        self.variables = [variables] if not isinstance(variables, list) else variables
 
     def fit(self, X, y=None):
         # to accomodate the pipeline
