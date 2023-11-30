@@ -9,10 +9,7 @@ class CategoricalImputer(BaseEstimator, TransformerMixin):
     """Categorical data missing value imputer."""
 
     def __init__(self, variables=None) -> None:
-        if not isinstance(variables, list):
-            self.variables = [variables]
-        else:
-            self.variables = variables
+        self.variables = [variables] if not isinstance(variables, list) else variables
 
     def fit(self, X: pd.DataFrame, y: pd.Series = None
             ) -> 'CategoricalImputer':
@@ -34,10 +31,7 @@ class NumericalImputer(BaseEstimator, TransformerMixin):
     """Numerical missing value imputer."""
 
     def __init__(self, variables=None):
-        if not isinstance(variables, list):
-            self.variables = [variables]
-        else:
-            self.variables = variables
+        self.variables = [variables] if not isinstance(variables, list) else variables
 
     def fit(self, X, y=None):
         # persist mode in a dictionary
@@ -57,11 +51,7 @@ class TemporalVariableEstimator(BaseEstimator, TransformerMixin):
     """Temporal variable calculator."""
 
     def __init__(self, variables=None, reference_variable=None):
-        if not isinstance(variables, list):
-            self.variables = [variables]
-        else:
-            self.variables = variables
-
+        self.variables = [variables] if not isinstance(variables, list) else variables
         self.reference_variables = reference_variable
 
     def fit(self, X, y=None):
@@ -81,10 +71,7 @@ class RareLabelCategoricalEncoder(BaseEstimator, TransformerMixin):
 
     def __init__(self, tol=0.05, variables=None):
         self.tol = tol
-        if not isinstance(variables, list):
-            self.variables = [variables]
-        else:
-            self.variables = variables
+        self.variables = [variables] if not isinstance(variables, list) else variables
 
     def fit(self, X, y=None):
         # persist frequent labels in dictionary
@@ -111,10 +98,7 @@ class CategoricalEncoder(BaseEstimator, TransformerMixin):
     """String to numbers categorical encoder."""
 
     def __init__(self, variables=None):
-        if not isinstance(variables, list):
-            self.variables = [variables]
-        else:
-            self.variables = variables
+        self.variables = [variables] if not isinstance(variables, list) else variables
 
     def fit(self, X, y):
         temp = pd.concat([X, y], axis=1)
